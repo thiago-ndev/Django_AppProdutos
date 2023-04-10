@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap'); 
+
+.container{
+    margin: 0 auto;
+    background-color: white;
+    font-family: Source Code Pro, Arial, Helvetica, sans-serif;
+
+}
+
+.header{
+margin-top: 30px;
+margin-bottom: 30px;
+display: flex;
+background-color: #0ea5dc;
+height: 100px;
+justify-content: space-between ;
+
+}
+
+.titulo{
+width: 700px;
+display: flex;
+align-items: center;
+padding-left: 10px;
+}
+
+.titulo h1{
+margin: 0;
+}
+
+.menu{
+width: 350px;
+align-items: center;
+display: flex;
+}
+
+.menu a{
+text-decoration: none;
+padding-left: 10px;
+}
+
+.menu a:hover{
+text-decoration: underline;
+}
+
+
+.footer{
+margin-top: 30px;
+margin-bottom: 30px;
+background-color: #0ea5dc;
+height: 80px;
+text-align: center;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+.content{
+min-height: 350px;
+background-color: #9e9999;
+padding-left: 30px;
+padding-top: 30px;
+box-sizing: border-box;
+}
+
+.content table{
+width: 95%;
+padding-top: 10px;
+
+}

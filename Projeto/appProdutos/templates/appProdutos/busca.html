@@ -1,0 +1,20 @@
+{% extends 'appProdutos/base.html' %}
+{% load static %}
+{% block main_content %}
+<p> Utilize o formulário abaixo para efetuar a busca: </p>
+
+<form method="POST" action="#"  id="form" class="form-inline">
+    {% csrf_token %}
+    <input type="text" name="nome" id="nome" placeholder="Nome" class="form-control mr-sm-2" />
+    <input type="submit" value="Efetuar busca" class="form-control btn-primary"  />
+</form>
+<div id="saida">
+</div>
+
+<script src="{% static 'appProdutos/js/main.js' %}" type="text/javascript"> </script>
+
+{% endblock %}
+
+
+
+

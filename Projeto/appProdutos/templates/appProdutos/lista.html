@@ -1,0 +1,40 @@
+{% extends 'appProdutos/base.html' %}
+
+{% block main_content %}
+
+<h3> Tabela de produtos cadastrados </h3>
+
+{% if produtos or produtos|length > 0 %}
+<table  align="center" class="table table-bordered table-striped table-sm table-dark" >
+
+  <tr align="center">
+        <th> codigo </th>
+        <th> nome  </th>
+        <th> preço </th>
+        <th> quantidade </th>
+        <th> Operações </th>
+  </tr>
+
+    {% for produto in produtos %}
+        <tr align="center" >
+            <td> {{ produto.codigo }}  </td>
+            <td> {{ produto.nome }}  </td>
+            <td> {{ produto.preco }}  </td>
+            <td> {{ produto.quantidade }}  </td>
+            <td> <a href="{% url 'produtos:alterar' codigo=produto.codigo %}"
+                    class="btn btn-warning btn-sm" > alterar </a> |
+                 <a href="{% url 'produtos:excluir' codigo=produto.codigo %}"
+            onclick="return window.confirm('Deseja realmente excluir ? ');"
+                    class="btn btn-danger btn-sm" > excluir </a> </td>
+        </tr>
+
+        {% endfor %}
+
+</table>
+{% else %}
+    <p> Nenhum produto cadastrado </p>
+{% endif %}
+
+{% if msg %} {{ msg }} {% endif %}
+
+{% endblock %}
