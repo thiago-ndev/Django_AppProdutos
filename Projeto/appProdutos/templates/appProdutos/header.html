@@ -1,46 +1,40 @@
-<div class="header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+{% load static %}
+
+<div class="header"> 
+  <div class="header">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-color" data-bs-theme="dark">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'appProdutos:home' %}">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Menu 
-                </a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="{% url 'appProdutos:lista' %}">Lista</a>
-                <a class="dropdown-item" href="{% url 'appProdutos:busca' %}">Busca</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'appProdutos:cadastro' %}">Cadastro de produtos</a>
-              </div>
-            </li>
-            
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="{% url 'appProdutos:lista' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Gerenciar Produtos
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'appProdutos:cadastro' %}">Cadastrar</a></li>
+                      <li><a class="dropdown-item" href="{% url 'appProdutos:lista' %}">Listar Produtos</a></li>
+                  </ul>
+              </li>
+  
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Gerenciar Clientes
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{%  url 'appClientes:cadastro' %}">Cadastrar </a></li>
+                      <li><a class="dropdown-item" href="#"> Listar Clientes </a></li>
+                  </ul>
+              </li>
           </ul>
+          </div>
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
-    <div class="titulo">
-             <h3 align="center"> Controle de estoque de produtos </h3>
-    </div>
-    <div class="menu">
-
-         <a href="{% url 'produtos:home' %}" class="btn btn-primary"> Home </a> &nbsp;
-         <a href="{% url 'produtos:cadastro' %}" class="btn btn-primary"> Cadastro </a> &nbsp;
-         <a href="{% url 'produtos:busca' %}" class="btn btn-primary"> Busca </a> &nbsp;
-         <a href="{% url 'produtos:lista' %}" class="btn btn-primary"> Lista </a> &nbsp;
-    </div>
-
+              <input class="form-control mr-sm-2" type="search" placeholder="Busca" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+      </div>
+  </nav>
 </div>

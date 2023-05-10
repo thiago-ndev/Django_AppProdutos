@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 from .forms import CadastroForm
+from django.contrib import messages
+from django.contrib.messages import constants
 from .models import Produto
 import json
 # Create your views here.
@@ -33,21 +35,24 @@ def cadastrar(request):
                 produto.quantidade = form.cleaned_data['quantidade']
 
                 codigo = form.cleaned_data['codigo']
+            
 
-                msg = 'Produto cadastrado com sucesso'
-
-                if codigo is not None:
+                if codigo:
                     produto.codigo = codigo
-                    msg = 'Produto Atualizado com sucesso.'
+                    messages.add_message(request, constants.WARNING, "Produto Alterado.")
 
                 produto.save()
-
+                
             else:
                 msg = form.errors
-                return render(request,CADASTRO_PAGE,{'form':CadastroForm,'msg':msg})
+                return render(request,CADASTRO_PAGE,{'form':CadastroForm, 'msg':msg})
+            
+            messages.add_message(request, constants.SUCCESS, "Produto Cadastrado.")
             return render(request,CADASTRO_PAGE,{'form':CadastroForm,'msg':msg})
+        
         else:
             raise Exception('MethodEnvioError, Use POST para Formularios.')
+        
     except Exception as ex:
         msg = ex.args
         return render(request,CADASTRO_PAGE,{'form':CadastroForm,'msg':msg})
@@ -70,6 +75,7 @@ def alterar(request,codigo):
             'codigo': produto.codigo
 
         })
+        
         return render(request,CADASTRO_PAGE,{'form':form})
 
     except Exception as ex:
@@ -83,11 +89,13 @@ def excluir(request,codigo):
         result = produto.delete()
 
         if result[0] > 0:
-            msg = 'Produto deletado com sucesso.'
+            messages.add_message(request, constants.ERROR, "Produto deletado.")
+            
         else:
-            msg = 'Produto não encontrado.'
-
-        return render(request,LISTA_PAGE,{'produtos':produtos, 'msg':msg })
+            messages.add_message(request, constants.ERROR, "Produto não encontrado.")
+            
+            
+        return render(request,LISTA_PAGE,{'produtos':produtos})
 
     except Exception as ex:
         msg = ex.args

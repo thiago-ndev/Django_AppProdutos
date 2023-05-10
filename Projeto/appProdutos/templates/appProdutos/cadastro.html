@@ -2,7 +2,8 @@
 
 {% block main_content %}
 
-<p> Cadastre o produto no formulario abaixo </p>
+<p align="center"> Cadastro de produto </p>
+<hr color="black">
 
 <form method="POST" action="{% url 'produtos:cadastrar' %}">
 
@@ -11,21 +12,21 @@
 
     <div class="form-group row">
         <label for="id_nome" class="col-sm-10"> {{ form.nome.label }}</label>
-        <div class="col-sm-5">
+        <div class="col-sm-3">
             {{ form.nome }}
         </div>
     </div>
 
     <div class="form-group row">
         <label for="id_nome" class="col-sm-10"> {{ form.preco.label}}</label>
-        <div class="col-sm-5">
+        <div class="col-sm-3">
             {{form.preco}}
         </div>
     </div>
 
     <div class="form-group row">
         <label for="id_nome" class="col-sm-10"> {{ form.quantidade.label }}</label>
-        <div class="col-sm-5">
+        <div class="col-sm-3">
             {{form.quantidade}}
         </div>
     </div>
@@ -40,6 +41,11 @@
 
 </form>
 
-{% if msg %} {{ msg }} {% endif %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert {{message.tags}}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
 
+<hr style="border-color:blanchedalmond">
 {% endblock %}

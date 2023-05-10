@@ -1,5 +1,11 @@
 {% extends 'appProdutos/base.html' %}
 
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert {{message.tags}}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
 {% block main_content %}
 
 <h1> bem vindo a home page do sistema </h1>

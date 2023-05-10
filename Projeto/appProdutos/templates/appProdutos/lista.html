@@ -2,7 +2,7 @@
 
 {% block main_content %}
 
-<h3> Tabela de produtos cadastrados </h3>
+<p align="center"> Tabela de produtos cadastrados </p>
 
 {% if produtos or produtos|length > 0 %}
 <table  align="center" class="table table-bordered table-striped table-sm table-dark" >
@@ -35,6 +35,10 @@
     <p> Nenhum produto cadastrado </p>
 {% endif %}
 
-{% if msg %} {{ msg }} {% endif %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert {{message.tags}}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
 
 {% endblock %}
