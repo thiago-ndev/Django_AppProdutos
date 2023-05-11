@@ -24,7 +24,6 @@ def cadastro(request):
     return render(request,CADASTRO_PAGE, {'form': form})
 
 def cadastrar(request):
-
     try:
         if request.method == 'POST':
             form = CadastroForm(request.POST)

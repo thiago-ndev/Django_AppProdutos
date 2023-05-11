@@ -1,98 +1,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 .container {
-font-family: verdana;
-font-size: 20px;
-width: 100%;
-display: inline;
+    font-family: verdana;
+    font-size: 20px;
+    width: 100%;
+    display: inline;
 }
 
 .titulo h3 {
-align-items: center;
+    align-items: center;
 }
 
 .menu {
-width: 350px;
-align-items: center;
-display: flex;
+    width: 350px;
+    align-items: center;
+    display: flex;
 }
 
 .menu a {
-text-decoration: none;
-padding-left: 10px;
+    text-decoration: none;
+    padding-left: 10px;
 }
 
 .menu a:hover {
-text-decoration: underline;
+    text-decoration: underline;
 }
 
 .content {
-min-height: 350px;
-padding-left: 30px;
-padding-top: 30px;
-box-sizing: border-box;
+    min-height: 350px;
+    padding-left: 30px;
+    padding-top: 30px;
+    box-sizing: border-box;
 }
 
 .content table {
-width: 95%;
-padding-top: 10px;
+    width: 95%;
+    padding-top: 10px;
 }
 
 .navbar-color {
-background-color: #201F1F !important;
+    background-color: #201F1F !important;
 }
 
 body {
-background-color: #1C1A1A;
+    background-color: #1C1A1A;
 }
 
 .fundo-pagina {
-background-image: url('/static/evento/img/fundo_pagina.png');
-height: 300px;
-background-size: cover;
+    background-image: url('/static/evento/img/fundo_pagina.png');
+    height: 300px;
+    background-size: cover;
 }
 
 .page-footer {
-background-color: white;
-color: black;
-position: absolute;
-bottom: 0;
-width: 100%;
-height: 80px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
 }
 
 .page-footer .container {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .page-footer h5 {
-margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .page-footer p {
-margin-top: 0;
-margin-bottom: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
 .page-footer a {
-color: black;
+    color: rgb(30, 18, 164);
+    padding-left: 1%;
+    
 }
 
 @media (max-width: 600px){
-.page-footer {
-height: auto;
-padding-top: 20px;
-padding-bottom: 20px;
-}
-}
-.page-footer .container {
-    flex-direction: row;
+    .page-footer {
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
 }
 
-.page-footer h5 {
-    margin-right: 10px;
+@media (min-width: 601px) {
+    .page-footer .container {
+        flex-direction: row;
+    }
+
+    .page-footer h5 {
+        margin-right: 10px;
+    }
+}
+
+.footer-copyright{
+    background-color: #ffffff;
+
 }

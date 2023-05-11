@@ -3,38 +3,56 @@
 {% block main_content %}
 
 <p align="center"> Cadastro de Clientes </p>
+<hr color="black">
 
-<form method="POST" action="#" row="center">
+<form method="POST" action="{% url 'clientes:cadastrar' %}" row="center">
 
     {% csrf_token %}
     
     <div class="form-group row">
-        <label for="id_nome" class="col-sm-10"> {{ form_cliente.nome.label }}</label>
+        <label for="id_nome" class="col-sm-0"> {{ form_cliente.nome.label }}</label>
         <div class="col-sm-3">
             {{ form_cliente.nome }}
         </div>
+        <label for="id_name" class="col-sm-0"> {{form_endereco.cidade.label}}</label>
+        <div class="col-sm-3">
+            {{form_endereco.cidade }}
+        </div>
     </div>
 
+
     <div class="form-group row">
-        <label for="id_nome" class="col-sm-10"> {{ form_cliente.email.label}}</label>
+        <label for="id_nome" class="col-sm-0"> {{ form_cliente.email.label}}</label>
         <div class="col-sm-3">
             {{form_cliente.email}} 
+        </div>
+        <label for="id_name" class="col-sm-0">{{form_endereco.bairro.label}}</label>
+        <div class="col-sm-3">
+            {{form_endereco.bairro}}
         </div>
     </div>
 
     <div class="form-group row">
-        <label for="id_nome" class="col-sm-10"> {{ form_cliente.senha.label }}</label>
+        <label for="id_nome" class="col-sm-0"> {{ form_cliente.senha.label }}</label>
         <div class="col-sm-3">
             <div class="input-group-append">
             {{form_cliente.senha}} <span class="input-group-text"></span> 
             </div>
         </div>
+        <label for="id_name" class="col-sm-0">{{form_endereco.numero.label}}</label>
+        <div class="col-sm-1">
+             {{form_endereco.numero}}
+        </div>
     </div>
 
     <div class="form-group row">
-        <label for="id_nome" class="col-sm-10"> {{ form_cliente.data_Nasc.label }}</label>
+        <label for="id_nome" class="col-sm-0"> {{ form_cliente.data_Nasc.label }}</label>
         <div class="col-sm-3">
             {{form_cliente.data_Nasc}}
+        </div>
+        <label for="id_name" class="col-sm-0"> {{form_endereco.rua.label}}</label>
+        <div class="col-sm-1">
+            {{form_endereco.rua}}
         </div>
     </div>
 
