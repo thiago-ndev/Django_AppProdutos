@@ -1,0 +1,47 @@
+{% extends 'appClientes/base.html' %}
+
+{% block main_content %}
+<p align="Center"> Clientes Cadastrados </p>
+
+{% if clientes or clientes|length > 0 %}
+<table align="center" class="table table-bordered table-striped table-sm table-dark">
+
+    <tr align="center">
+        <th> id </th>
+        <th> nome  </th>
+        <th> email </th>
+        <th> data de Nascimento </th>
+        <th> endereço </th>
+        
+        
+        <th> Operações </th>
+  </tr>
+    
+    {% for cliente in clientes  %} 
+    <tr align="center">
+        <td> {{ cliente.id }} </td>
+        <td> {{cliente.nome}}  </td>
+        <td> {{ cliente.email }} </td>
+        <td> {{ cliente.data_Nasc }} </td>
+        <td> {{ cliente.endereco.cidade}}, {{cliente.endereco.bairro}},
+             {{cliente.endereco.rua}}, {{cliente.endereco.numero}} </td>
+             <td> <a href="{% url 'clientes:alterar' id=cliente.id %}"
+                class="btn btn-warning btn-sm" > alterar </a> |
+             <a href="{% url 'clientes:excluir' id=cliente.id%}"
+        onclick="return window.confirm('Deseja realmente excluir ? ');"
+                class="btn btn-danger btn-sm" > excluir </a> </td>
+  </tr>
+    {% endfor %}
+
+</table>
+{% else %}
+    <p> Nenhum Cliente cadastrado </p>
+{% endif %}
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert {{message.tags}}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

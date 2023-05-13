@@ -23,7 +23,7 @@ class Endereco(models.Model):
     rua = models.CharField(max_length=60, null=False)
     numero = models.IntegerField(null=False) 
     
-    Cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False)
+    cliente = models.OneToOneField(Cliente, on_delete=models.CASCADE, null=True)
     
     
     def __str__(self):

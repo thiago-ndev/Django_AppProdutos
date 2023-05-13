@@ -32,7 +32,7 @@ def cadastrar(request):
                 produto.nome = form.cleaned_data['nome']
                 produto.preco = form.cleaned_data['preco']
                 produto.quantidade = form.cleaned_data['quantidade']
-
+            
                 codigo = form.cleaned_data['codigo']
             
 

@@ -16,11 +16,13 @@ def home(request):
     template = loader.get_template('appClientes/index.html')
     return HttpResponse(template.render())
 
+
 def cadastro(request):        
     form_cliente = ClienteForm()
     form_endereco =  EnderecoForm()
     
     return render(request, CADASTRO_PAGE, {'form_cliente': form_cliente, 'form_endereco': form_endereco} )
+
 
 def cadastrar(request):
     try:
@@ -40,33 +42,87 @@ def cadastrar(request):
                 endereco.numero = form_endereco.cleaned_data['numero']
                 
                 cliente.save()
+                
+                endereco.cliente = cliente
                 endereco.save()
-                    
-
+                
             else:
                 msg = form_cliente.errors
                 msg1 = form_endereco.errors
-                print(msg)
-                print(msg1)
+                
+                return render(request, CADASTRO_PAGE,{'form_cliente': form_cliente, 'form_endereco': form_endereco} ,
+                              messages.add_message(request, constants.ERROR, f'{msg}, {msg1}'))                    
             
         else:
-            raise Exception(messages.add_message(request, constants.ERROR, "MethodEnvioError, Use POST para enviar formulários."))
+            raise Exception(CADASTRO_PAGE,{'form_cliente': form_cliente, 'form_endereco': form_endereco},
+                            messages.add_message(request, constants.ERROR, "MethodEnvioError, Use POST para enviar formulários."))
         
-        return print('aqui')                    
+        return render(request, CADASTRO_PAGE,{'form_cliente': form_cliente, 'form_endereco': form_endereco}, messages.add_message(request, constants.SUCCESS, "Cadastrado"))                    
         
     except Exception as ex:
         msg = ex.args
-        return render(request, CADASTRO_PAGE,messages.add_message(request, constants.ERROR, msg))
+        return render(request, CADASTRO_PAGE,{'form_cliente': form_cliente, 'form_endereco': form_endereco},
+                      messages.add_message(request, constants.ERROR, msg))
     
-def buscar(request):
-    pass
+    
+def busca(request):
+    return render(request, BUSCA_PAGE)
+
 
 def lista(request):
-    pass  
+    clientes = Cliente.objects.order_by('id').all()
+    enderecos = Endereco.objects.all()
+    return render(request, LISTA_PAGE, {'clientes': clientes, 'enderecos':enderecos})
+      
 
-def alterar(request):
-    pass
+def alterar(request, id):
+    try:
+        cliente = Cliente.objects.get(pk=id)
+        endereco = Endereco.objects.get()
+        form_cliente = ClienteForm(initial={
+            'nome': cliente.nome,
+            'email': cliente.email,
+            'senha': cliente.senha,
+            'data_Nasc': cliente.data_Nasc,
+            'id': cliente.id, 
+            
 
-def excluir(request):
-    pass
-
+        })
+        form_endereco = EnderecoForm(initial={
+            'cidade': endereco.cidade, 
+            'bairro': endereco.bairro,
+            'rua': endereco.rua,
+            'numero': endereco.numero,
+            'id': endereco.cliente
+            
+        })
+        
+        
+        return render(request, CADASTRO_PAGE, {'form_cliente':form_cliente, 'form_endereco': form_endereco})
+        
+        
+    except Exception as ex:
+        msg = ex.args
+        return render(request, LISTA_PAGE, {'clientes': Cliente.objects.all()} , 
+                      messages.add_message(request, constants.ERROR,f'{msg}'))
+        
+        
+def excluir(request, id):
+    clientes = Cliente.objects.all()
+    try:
+        cliente = Cliente.objects.get(pk=id)
+        result = cliente.delete()
+        if result[0] > 0:
+            messages.add_message(request, constants.ERROR, 'Cliente Deletado')
+            
+        else:
+            messages.add_message(request, constants.ERROR, 'Nenhum Cliente encontrado')
+            
+        return render(request, LISTA_PAGE, {'clientes ': clientes})                
+        
+        
+    except Exception as ex:
+        msg = ex.args
+        render(request, LISTA_PAGE, messages.add_message(request, constants.ERROR, f'{msg}'),
+                      {'clientes': Cliente.objects.all()})
+    

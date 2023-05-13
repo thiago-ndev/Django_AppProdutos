@@ -10,13 +10,13 @@ urlpatterns = [
     
     path('cadastrar/', views.cadastrar, name='cadastrar'),
     
-    path('buscar/', views.buscar, name="buscar"),
+    path('busca/', views.busca, name="busca"),
     
     path('lista/', views.lista, name="lista"),
     
-    path('alterar/<int:codigo>/', views.alterar, name='alterar'),
+    path('alterar/<int:id>/', views.alterar, name='alterar'),
     
-    path('excluir/<int:codigo>/', views.excluir, name='excluir')
+    path('excluir/<int:id>/', views.excluir, name='excluir')
         
 ]
 
