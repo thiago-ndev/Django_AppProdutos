@@ -1,7 +1,7 @@
 {% extends 'plataforma/base.html' %}
 
 {% block main_content %}
-<form id="login-form" method="POST" action="#"> {% csrf_token %}
+<form id="login-form" method="POST" action="{% url 'produtos:home' %}"> {% csrf_token %}
     <div class="col-md-6">
         <h2 style="color: #fff;">Login</h2>
         <form id="login-form">
@@ -13,7 +13,10 @@
             <label for="senha" style="color: #fff;">Senha:</label>
             <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
         </div>
+        <div>
         <button type="submit" class="btn btn-primary mt-4">Entrar</button>
+        <a type="submit" class="btn btn-primary mt-4" href="{% url 'clientes:cadastro' %}">cadastre-se</a>
+        </div>
         </form>
     </div>
 </form>

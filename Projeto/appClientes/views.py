@@ -46,6 +46,11 @@ def cadastrar(request):
                 endereco.cliente = cliente
                 endereco.save()
                 
+                if id:
+                    cliente.save()
+                    messages.add_message(request, constants.ERROR, 'Dados alterados')
+                
+                
             else:
                 msg = form_cliente.errors
                 msg1 = form_endereco.errors
@@ -83,9 +88,7 @@ def alterar(request, id):
             'nome': cliente.nome,
             'email': cliente.email,
             'senha': cliente.senha,
-            'data_Nasc': cliente.data_Nasc,
-            'id': cliente.id, 
-            
+            'data_Nasc': cliente.data_Nasc,            
 
         })
         form_endereco = EnderecoForm(initial={
