@@ -1,7 +1,10 @@
 from django import forms
-
+import datetime
 
 class ClienteForm(forms.Form):
+    
+    codigo = forms.IntegerField(required=False, widget=forms.HiddenInput())
+    
     nome = forms.CharField(label="Nome: ", max_length=100, 
                            widget= forms.TextInput(attrs={'class' : 'form-control', 'placeholder': 'nome'}))
     
@@ -10,8 +13,8 @@ class ClienteForm(forms.Form):
                             widget= forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'email'}))
     
     senha = forms.CharField(label="Senha: ", max_length=100, widget= forms.TextInput(attrs={'type': 'password'}))
-    data_Nasc = forms.DateField(label='Data',widget=forms.DateInput(attrs={'type': 'date'}),
-                                input_formats=['%d/%m/%y', '%Y-%m-%d' ])
+    data_Nasc = forms.DateField(label='Data',widget=forms.DateInput(format='%Y/%m/%d' ,attrs={'type': 'date'}),
+                                input_formats=['%y/%m/%d', '%Y-%m-%d'])
     
 
 class EnderecoForm(forms.Form):    

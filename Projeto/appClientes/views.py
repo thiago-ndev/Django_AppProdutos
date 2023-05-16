@@ -5,6 +5,9 @@ from django.contrib import messages
 from django.contrib.messages import constants
 from .forms import ClienteForm, EnderecoForm
 from .models import Cliente, Endereco
+from util import Crypt_Password
+import datetime
+
 
 CADASTRO_PAGE = 'appClientes/cadastro.html'
 BUSCA_PAGE = 'appClientes/busca.html'
@@ -34,23 +37,33 @@ def cadastrar(request):
             if form_cliente.is_valid() and form_endereco.is_valid():
                 cliente.nome = form_cliente.cleaned_data['nome']
                 cliente.email = form_cliente.cleaned_data['email']
-                cliente.senha = form_cliente.cleaned_data['senha']
+                cliente.senha =  Crypt_Password(form_cliente.cleaned_data['senha'])
                 cliente.data_Nasc =form_cliente.cleaned_data['data_Nasc']
                 endereco.cidade = form_endereco.cleaned_data['cidade']
                 endereco.bairro = form_endereco.cleaned_data['bairro']
                 endereco.rua = form_endereco.cleaned_data['rua']
                 endereco.numero = form_endereco.cleaned_data['numero']
                 
-                cliente.save()
-                
-                endereco.cliente = cliente
-                endereco.save()
-                
-                if id:
+                codigo = form_cliente.cleaned_data['codigo']             
+            
+                if codigo:
+                    cliente.pk = codigo
                     cliente.save()
-                    messages.add_message(request, constants.ERROR, 'Dados alterados')
+                    endereco.cliente = cliente
+                    endereco.save()
+                    return render(request, CADASTRO_PAGE, {'form_cliente': form_cliente, 'form_endereco': form_endereco},
+                                  messages.add_message(request, constants.WARNING, 'Alterado.'))
+
                 
+                if cliente.data_Nasc:
+                    cliente.data_Nasc.strftime("%d/%m/%y")
+                                
+                cliente.save()
+                endereco.cliente = cliente
                 
+                endereco.save()
+            
+
             else:
                 msg = form_cliente.errors
                 msg1 = form_endereco.errors
@@ -83,12 +96,15 @@ def lista(request):
 def alterar(request, id):
     try:
         cliente = Cliente.objects.get(pk=id)
-        endereco = Endereco.objects.get()
+        endereco = Endereco.objects.get(pk=id)
+        data_nasc = cliente.data_Nasc
+        
         form_cliente = ClienteForm(initial={
             'nome': cliente.nome,
             'email': cliente.email,
             'senha': cliente.senha,
-            'data_Nasc': cliente.data_Nasc,            
+            'data_Nasc': data_nasc,
+            'codigo' : cliente.pk            
 
         })
         form_endereco = EnderecoForm(initial={
@@ -96,7 +112,7 @@ def alterar(request, id):
             'bairro': endereco.bairro,
             'rua': endereco.rua,
             'numero': endereco.numero,
-            'id': endereco.cliente
+            
             
         })
         
@@ -121,7 +137,7 @@ def excluir(request, id):
         else:
             messages.add_message(request, constants.ERROR, 'Nenhum Cliente encontrado')
             
-        return render(request, LISTA_PAGE, {'clientes ': clientes})                
+        return render(request, LISTA_PAGE, {'clientes': clientes})                
         
         
     except Exception as ex:

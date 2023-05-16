@@ -34,13 +34,20 @@ def cadastrar(request):
                 produto.quantidade = form.cleaned_data['quantidade']
             
                 codigo = form.cleaned_data['codigo']
-            
 
+                if produto.preco < 0 or produto.quantidade <0:
+                    messages.add_message(request, constants.ERROR, 'O produto não pode ter valor negativo.')
+                    return render(request, CADASTRO_PAGE,{'form': form})
+                    
                 if codigo:
-                    produto.codigo = codigo
                     messages.add_message(request, constants.WARNING, "Produto Alterado.")
-
+                    produto.codigo = codigo
+                    produto.save()
+                    return render(request,CADASTRO_PAGE,{'form':CadastroForm})
+                    
+                    
                 produto.save()
+                
                 
             else:
                 msg = form.errors

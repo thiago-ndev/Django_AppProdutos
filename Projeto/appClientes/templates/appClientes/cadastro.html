@@ -8,6 +8,7 @@
 <form method="POST" action="{% url 'clientes:cadastrar' %}" row="center">
 
     {% csrf_token %}
+    {{ form_cliente.codigo }}
     
     <div class="form-group row">
         <label for="id_nome" class="col-sm-0"> {{ form_cliente.nome.label }}</label>
