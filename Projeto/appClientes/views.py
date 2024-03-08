@@ -77,6 +77,10 @@ def cadastrar(request):
         
         return render(request, CADASTRO_PAGE,{'form_cliente': form_cliente, 'form_endereco': form_endereco}, messages.add_message(request, constants.SUCCESS, "Cadastrado"))                    
         
+        
+        # Verificar porque está gerando um Exception no retorndo do endereco quando vai alterar um cliente.
+        # pode ser a falta do id do endereco la no método cadastrar
+        
     except Exception as ex:
         msg = ex.args
         return render(request, CADASTRO_PAGE,{'form_cliente': form_cliente, 'form_endereco': form_endereco},
