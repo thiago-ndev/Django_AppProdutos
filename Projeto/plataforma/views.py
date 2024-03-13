@@ -7,9 +7,9 @@ from . models import models
 
 # Create your views here.
 
-HOME_PAGE = 'plataforma/index.html'
+HOME_PAGE = 'plataforma/base.html'
 CADASTRO_PAGE = 'plataforma/cadastro.html'
-LOGIN_PAGE = 'plataforma/login.html'
+TROCAR_SENHA_PAGE = 'plataforma/trocar_senha.html'
 
 
 def home(request):
@@ -22,11 +22,11 @@ def login(request):
         
         
         # apenas parar de dar error, tira esse return depois
-        return render(request, LOGIN_PAGE)
+        return render(request, HOME_PAGE)
         
     except Exception as ex:
         msg = ex.args
-        return render(request, LOGIN_PAGE, messages.add_message(request, constants.ERROR, f'{msg}'))
+        return render(request, HOME_PAGE, messages.add_message(request, constants.ERROR, f'{msg}'))
           
 
 def cadastro(request):
@@ -52,3 +52,6 @@ def cadastro(request):
         msg = ex.args 
         return render(request, CADASTRO_PAGE)
     
+
+def alterar_senha(request):
+    return render(request,  TROCAR_SENHA_PAGE)
