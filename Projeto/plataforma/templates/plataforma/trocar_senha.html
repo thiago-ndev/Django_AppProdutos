@@ -1,0 +1,34 @@
+{% extends 'plataforma/base.html' %}
+
+
+{% block main_content %}
+     <main>
+    <section class="formulario-login">
+            <div class="container">
+                    <form class="login-form" method="POST" action="{% url 'plataforma:home' %}"> {% csrf_token %}
+                        <div class="col-md-8">
+                            <h2 style="color: #fff;">Recuperar Senha</h2>
+                            <div class="form-group">
+                                <label for="email" style="color: #fff;">E-mail:</label>
+                                <input type="email" class="form-control" id="email" placeholder="Digite o E-mail do Usuário" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="senha" style="color: #fff;">Codigo de Recuperação:</label>
+                                <input type="text" class="form-control" id="codigo" placeholder="Digite o codigo enviado" required>
+                                <!--
+                                Adicionar depois no javascript uma logica para esconder o campo para que ele só apareça quando o usuario clicar para enviar o e-mail
+                                ou então criar uma nova pagina com uma nova rota só para o usuario digitar o codigo
+                                -->
+                            </div>
+                            <div class="form-group">
+                            <button id="confrim" type="submit" class="btn btn-primary">Entrar</button>
+                            <a class="btn btn-primary" href="{% url 'plataforma:home' %}"  style="color: white; text-decoration: none;"> Voltar</a>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+        </section>
+    </main>
+{% endblock %}

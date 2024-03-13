@@ -1,31 +1,33 @@
 {% extends 'plataforma/base.html' %}
 
 {% block main_content %}
-
-<p align="center"> Cadastro de usuario </p>
-
-<form class="form1" method="POST" action="#">
-    {% csrf_token %}
-    {{ form.codigo }}
-
-    <form>
-        <div class="form-group">
-          <label for="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" required>
-        </div>
-        <div class="form-group">
-          <label for="email">E-mail:</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="senha">Senha:</label>
-          <input type="password" id="senha" name="senha" required>
-        </div>
-        <div class="form-group">
-          <label for="loja">Nome da loja:</label>
-          <input type="text" id="nome" name="senha" required>
-        </div>
-        <button type="submit">Enviar</button>
-      </form>
-
+<main>
+    <section class="formulario-cadastro">
+        <p align="center" style="color: white"> Cadastro de usuario </p>
+            <div class="container-cadastro">
+                <form class="cadastro-form" method="POST" action="{% url 'produtos:home' %}">
+                    {% csrf_token %}
+                    {{ form.codigo }}
+                        <div class="form-group">
+                          <label for="nome">Nome:</label>
+                          <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome do usuario" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="email">E-mail:</label>
+                          <input type="email" class="form-control" id="email" name="email" placeholder="Digite o email do usuario" required>
+                        </div>
+                        <div class="form-group">
+                         <label for="senha" style="color: #fff;">Senha:</label>
+                         <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="loja">Nome da loja:</label>
+                          <input type="text" id="nome" class="form-control" name="senha" placeholder="Digite o nome da loja que o usuario pertence" required>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Cadastrar</button>
+                        <a class="btn btn-success" href="{% url 'plataforma:home' %}"> Fazer login </a>
+                </form>
+            </div>
+    </section>
+</main>
 {% endblock %}

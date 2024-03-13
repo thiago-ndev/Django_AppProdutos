@@ -20,6 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('produtos/', include('appProdutos.urls', namespace='produtos')),
     path('clientes/', include('appClientes.urls', namespace='clientes')),
-    path('plataforma/', include('plataforma.urls', namespace='plataforma'))
+    path('', include('plataforma.urls', namespace='plataforma'))
          
 ]
