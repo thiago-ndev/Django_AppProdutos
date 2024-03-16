@@ -46,7 +46,7 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
-
+/.idea
 # VSCode
 .vscode/
 
@@ -55,3 +55,4 @@ cython_debug/
 /env
 .idea
 .idea/workspace.xml
+Depois_eu_faco.txt

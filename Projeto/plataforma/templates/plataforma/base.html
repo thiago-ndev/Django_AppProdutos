@@ -9,15 +9,21 @@
     <link rel="stylesheet" href="{% static 'plataforma/css/cadastro.css' %}">
     <link rel="stylesheet" href="{% static 'plataforma/css/reset.css' %}">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link rel="stylesheet" href="{% static 'appProdutos/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'appProdutos/css/bootstrap.min.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </head>
 <body>
+<div class="logo" style="padding-top: 20px">
+    <img src="{% static 'plataforma/img/3b874e1bacfab0d586c5534cc0c9b637-blue-star-square-logo.png' %}"  height="50px">
+</div>
+
 {% block main_content %}
+
  <main>
     <section class="formulario-login">
+
             <div class="container">
                     <form class="login-form" method="POST" action="{% url 'produtos:home' %}"> {% csrf_token %}
                         <div class="col-md-8">
