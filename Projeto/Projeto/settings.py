@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'appProdutos',
     'appClientes',
     'plataforma',
+    'mathfilters'
 
 ]
 
