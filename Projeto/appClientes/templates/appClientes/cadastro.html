@@ -1,4 +1,27 @@
-{% extends 'appClientes/base.html' %}
+{% extends 'appProdutos/base.html' %}
+
+###Dash Analytics
+    {% block active-dash_analytics-key_users %} data-active="false" data-toggle="collapse" aria-expanded="false" {% endblock %}
+    {% block show-dash_analytics-key_users %} class="collapse submenu list-unstyled" {% endblock %}
+
+
+
+
+    ###Alianca App
+    {% block active-alianca_app-key_users %}data-active="false" data-toggle="collapse" aria-expanded="false" {% endblock %}
+    {% block show-alianca_app-key_users %} class="collapse submenu list-unstyled"{% endblock %}
+
+
+
+    ###Manager App
+    {% block active-manager_app-key_users %}data-active="true" data-toggle="collapse" aria-expanded="true" {% endblock %}
+    {% block show-manager_app-key_users %} class="collapse submenu list-unstyled"{% endblock %}
+    {% block active_manager_app-key_users %} active {% endblock %}
+
+
+
+
+    {% block stored_structures-key_users %} color:#4361ee {% endblock %}
 
 {% block main_content %}
 
@@ -37,7 +60,7 @@
         <label for="id_nome" class="col-sm-0"> {{ form_cliente.senha.label }}</label>
         <div class="col-sm-3">
             <div class="input-group-append">
-            {{form_cliente.senha}} <span class="input-group-text"></span> 
+            {{form_cliente.senha}}
             </div>
         </div>
         <label for="id_name" class="col-sm-0">{{form_endereco.numero.label}}</label>
