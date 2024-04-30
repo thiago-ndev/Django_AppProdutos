@@ -4,8 +4,7 @@ from django.template import loader
 from django.contrib import messages
 from django.contrib.messages import constants
 from .forms import ClienteForm, EnderecoForm
-from .models import Cliente, Endereco
-from util import Crypt_Password
+from .models import Gerente, Endereco, Funcionario
 import datetime
 
 
@@ -14,6 +13,105 @@ BUSCA_PAGE = 'appClientes/busca.html'
 LISTA_PAGE = 'appClientes/lista.html'
 
 # Create your views here.
+
+class GerenciarProdutos:
+
+    def __cadastrar_produtos(self, produto):
+        pass
+
+    def __deletar_produtos(self, idproduto, produto):
+        pass
+
+    def __atualizar_produtos(self, idproduto, produto):
+        pass
+
+    def __listar_produtos(self):
+        pass
+
+
+class GerenciarFuncionarios:
+    """"
+    Classe responsavel por gerenciar os funcionarios
+    """
+
+    def __cadastrar_funcionarios(self):
+        pass
+
+    def __deletar_funcionarios(self):
+        pass
+
+    def __atualizar_funcionarios(self):
+        pass
+
+    def __listar_funcionarios(self):
+        pass
+
+
+class GerenciarCategorias:
+    """
+    Classe responsavel por gerenciar as categorias
+    """
+
+    def cadastrar_categorias(self):
+        pass
+
+    def deletar_categorias(self):
+        pass
+
+    def atualizar_categorias(self):
+        pass
+
+    def listar_categorias(self):
+        pass
+
+class GerenciarFornecedor:
+    """
+    Classe responsavel por gerenciar os Fornecedor
+    """
+
+    def cadastrar_fornecedor(self):
+        pass
+
+    def deletar_fornecedor(self):
+        pass
+
+    def atualizar_fornecedor(self):
+        pass
+
+    def listar_fornecedor(self):
+        pass
+
+
+
+class GerenciarEstoque:
+    """
+    Classe responsavel por gerenciar os Estoque
+    """
+
+    def cadastrar_estoque(self):
+        pass
+
+    def deletar_estoque(self):
+        pass
+
+    def atualizar_estoque(self):
+        pass
+
+    def listar_estoque(self):
+        pass
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def home(request):
     template = loader.get_template('appClientes/index.html')
@@ -32,7 +130,7 @@ def cadastrar(request):
         form_cliente = ClienteForm(request.POST)
         form_endereco = EnderecoForm(request.POST)
         if request.method == "POST":
-            cliente = Cliente()
+            cliente = Funcionario()
             endereco = Endereco()
             if form_cliente.is_valid() and form_endereco.is_valid():
                 cliente.nome = form_cliente.cleaned_data['nome']
