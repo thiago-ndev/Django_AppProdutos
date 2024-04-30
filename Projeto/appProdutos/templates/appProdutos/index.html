@@ -1,4 +1,28 @@
 {% extends 'appProdutos/base.html' %}
+{% load static %}
+
+###Dash Analytics
+    {% block active-dash_analytics-key_users %} data-active="false" data-toggle="collapse" aria-expanded="false" {% endblock %}
+    {% block show-dash_analytics-key_users %} class="collapse submenu list-unstyled" {% endblock %}
+
+
+
+
+    ###Alianca App
+    {% block active-alianca_app-key_users %}data-active="false" data-toggle="collapse" aria-expanded="false" {% endblock %}
+    {% block show-alianca_app-key_users %} class="collapse submenu list-unstyled"{% endblock %}
+
+
+
+    ###Manager App
+    {% block active-manager_app-key_users %}data-active="true" data-toggle="collapse" aria-expanded="true" {% endblock %}
+    {% block show-manager_app-key_users %} class="collapse submenu list-unstyled"{% endblock %}
+    {% block active_manager_app-key_users %} active {% endblock %}
+
+
+
+
+    {% block stored_structures-key_users %} color:#4361ee {% endblock %}
 
 {% if messages %}
     {% for message in messages %}
