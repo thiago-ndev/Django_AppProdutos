@@ -1,10 +1,24 @@
-Olá esse projeto é um sistema web para gerentes de lojas controlarem o seu estoque de produtos, e cadastro de clientes! 
+# Django_AppProdutos
 
-o sistema irá validar os dados do gerente da loja para que ele possa cadastrar clientes. 
+Este é um sistema web desenvolvido com Django para gestão de lojas. O sistema permite que gerentes controlem o estoque de produtos e o cadastro de clientes. Funcionários também podem ser cadastrados pelo gerente para gerenciar produtos.
 
-o gerente da loja poderá cadastrar funcionarios da sua loja para que eles também cadastrem produtos.
+## Funcionalidades
 
+- **Cadastro de gerentes:** Autenticação e validação para acesso ao sistema.
+- **Gestão de funcionários:** Possibilidade de adicionar e gerenciar funcionários responsáveis pelo cadastro de produtos.
+- **Controle de estoque:** Gerenciamento eficaz do estoque de produtos da loja.
+- **Cadastro de clientes:** Permite o registro de clientes pela loja.
 
+## Tecnologias Utilizadas
 
+- **Python:** Linguagem de programação.
+- **Django:** Framework para desenvolvimento web.
+- **HTML, CSS, JavaScript:** Tecnologias para desenvolvimento do frontend.
 
+## Como Executar
 
+1. Clone o repositório:
+   ```bash
+git clone https://github.com/thiago-ndev/Django_AppProdutos.git
+pip install -r requirements.txt
+python manage.py runserver
